@@ -8,6 +8,7 @@ function queryDb() {
         type: "list",
         message: "What would you like to do?",
         choices: [
+          "View Bookings",  
           "View all films",
           "View all customers",
           "View all cinema rooms",
@@ -21,7 +22,10 @@ function queryDb() {
         ]
       }])
       .then(function (answer) {
-        switch (answer.action) {
+        switch (answer.action) { 
+        case "View Bookings":
+            viewBookings();
+            break
           case "View all films":
             viewFilms();
             break;
@@ -56,6 +60,17 @@ function queryDb() {
         }
       });
   };
+// joins customer, booking, screening and film tables
+  function viewBookings() {
+    db.query(`SELECT c.first_name, c.last_name,c.email, f.name, s.start_time FROM bookings b
+    JOIN customers c ON b.customer_id = c.id
+    JOIN screenings s ON b.screening_id = s.id
+    JOIN films f ON s.film_id = f.id`, function (err, res) {
+      if (err) throw err;
+      console.table(res);
+      queryDb();
+    })
+  };
 
   function viewFilms() {
     db.query(`SELECT * FROM films`, function (err, res) {
@@ -74,11 +89,13 @@ function queryDb() {
   };
 
   function viewCustomers() {
-    db.query(`SELECT * FROM customers`, function (err, res) {
+    db.query(`SELECT DISTINCT * FROM customers`, function (err, res) {
       if (err) throw err;
       console.table(res);
       queryDb();
     })
   };
+
+  
 
   queryDb()
