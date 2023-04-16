@@ -4,8 +4,8 @@ require ("dotenv").config()
 let connection = mysql.createConnection({
     host: "localhost",
     port: 8889,
-    user: USER,
-    password: PW,
+    user: "root",
+    password: "root",
     database: "movie_booking"
   });
   
@@ -13,3 +13,5 @@ let connection = mysql.createConnection({
     if (err) throw err;
    console.log("movie db connected")
   });
+
+  module.exports = connection;
