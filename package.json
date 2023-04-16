@@ -1,0 +1,29 @@
+{
+  "name": "mysql-movie-booking",
+  "version": "1.0.0",
+  "description": "Movie booking app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rfnkurle/MySQL-Movie-Booking.git"
+  },
+  "keywords": [
+    "mysql",
+    "movie",
+    "booking"
+  ],
+  "author": "Robert Kurle",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rfnkurle/MySQL-Movie-Booking/issues"
+  },
+  "homepage": "https://github.com/rfnkurle/MySQL-Movie-Booking#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4",
+    "mysql2": "^3.2.3"
+  }
+}
