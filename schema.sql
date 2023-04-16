@@ -1,0 +1,9 @@
+CREATE DATABASE movie_booking;
+
+USE movie_booking;
+
+CREATE TABLE films(
+id INT PRIMARY KEY AUTO_INCREMENT,
+name VARCHAR(30) NOT NULL UNIQUE,
+length_min INT NOT NULL
+);
