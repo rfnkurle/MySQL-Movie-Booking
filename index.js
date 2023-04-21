@@ -8,7 +8,7 @@ function queryDb() {
         type: "list",
         message: "What would you like to do?",
         choices: [
-          "View Bookings",  
+          "View all Bookings",  
           "View all films",
           "View all customers",
           "View all cinema rooms",
@@ -23,7 +23,7 @@ function queryDb() {
       }])
       .then(function (answer) {
         switch (answer.action) { 
-        case "View Bookings":
+        case "View all Bookings":
             viewBookings();
             break
           case "View all films":
@@ -60,6 +60,7 @@ function queryDb() {
         }
       });
   };
+
 // joins customer, booking, screening and film tables
   function viewBookings() {
     db.query(`SELECT c.first_name, c.last_name,c.email, f.name, s.start_time FROM bookings b
@@ -87,7 +88,7 @@ function queryDb() {
       queryDb();
     })
   };
-
+// DISTINCT makes sure that customer only appears once on list even if they have booked more than one movie
   function viewCustomers() {
     db.query(`SELECT DISTINCT * FROM customers`, function (err, res) {
       if (err) throw err;
